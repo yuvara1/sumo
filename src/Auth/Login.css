@@ -1,0 +1,136 @@
+/* Aceternity hover animations for inputs and buttons */
+
+/* existing base styles here */
+.aceternity-input {
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+  position: relative;
+  will-change: transform, box-shadow;
+  z-index: 0;
+}
+.aceternity-input:hover,
+.aceternity-input:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45),
+    0 0 18px rgba(255, 255, 255, 0.03) inset;
+  border-color: rgba(255, 255, 255, 0.95);
+  outline: none;
+}
+.aceternity-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: color 0.18s ease, background-color 0.18s ease,
+    transform 0.12s ease;
+}
+.aceternity-btn__label {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+.aceternity-btn::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -40%;
+  width: 140%;
+  height: 120%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  transform: skewX(-12deg) translateX(-110%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
+  z-index: 1;
+  pointer-events: none;
+}
+.aceternity-btn:hover::before,
+.aceternity-btn:focus::before {
+  transform: skewX(-12deg) translateX(0%);
+}
+.aceternity-btn:active {
+  transform: translateY(1px) scale(0.997);
+}
+.aceternity-btn.inverse:hover {
+  color: black !important;
+  background: white !important;
+}
+
+/* ========== RESPONSIVE ADDITIONS ========== */
+
+/* Card wrapper helper — add this class to your login card container */
+.aceternity-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+
+/* Base input / button sizing (desktop) */
+.aceternity-input {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+}
+.aceternity-btn {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+}
+
+/* Small devices (phones) */
+@media (max-width: 640px) {
+  .login-container {
+    width: 100%;
+  }
+
+  #heading {
+    text-align: center;
+    padding: 10px;
+  }
+  #sub-heading {
+    display: none;
+  }
+  .aceternity-card {
+    max-width: calc(100% - 2rem);
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  .aceternity-input {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.92rem;
+  }
+  .aceternity-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+  }
+  /* stack social buttons tighter on very small screens */
+  .social-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .aceternity-card {
+    max-width: 520px;
+    padding: 1.25rem;
+  }
+  .aceternity-input {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.96rem;
+  }
+  .aceternity-btn {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.98rem;
+  }
+  .social-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

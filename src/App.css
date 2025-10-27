@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ensure full-height layout and no default body margin that can cause scroll */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background-color: #000000;
+}
+
+/* keep global app neutral (login has its own styling) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* design tokens */
+:root {
+  --shadow-input: 0px 2px 3px -1px rgba(0, 0, 0, 0.1),
+    0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+}

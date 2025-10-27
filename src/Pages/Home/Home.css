@@ -1,0 +1,46 @@
+.home-wrapper {
+  min-height: 100vh;
+  height: auto;
+  background-color: #000000;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.home-container {
+  min-height: 100vh;
+  position: relative;
+  background-color: #000;
+  /* DO NOT add transform, filter, or perspective here */
+}
+
+.fixed-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none; /* Allows mouse events to pass through to content */
+}
+
+.reveal-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: lighten;
+  opacity: 0.3;
+  -webkit-mask-image: radial-gradient(
+    circle at var(--mx) var(--my),
+    black 0%,
+    transparent 180px
+  );
+  mask-image: radial-gradient(
+    circle at var(--mx) var(--my),
+    black 0%,
+    transparent 180px
+  );
+}
+
+.scrollable-content {
+  position: relative; /* Establishes a stacking context above the background */
+  z-index: 1;
+}
