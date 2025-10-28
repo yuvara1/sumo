@@ -191,3 +191,6 @@ export const authService = {
     }
   },
 };
+
+// Add default export so `import authService from ".../auth"` also works
+export default authService;

@@ -15,20 +15,19 @@ import {
 import { Tent, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "./utils";
-import { authService } from "../../services/auth.js"; // Import the auth service
+import { authService } from "../../services/auth.js";
+import DataTable from "./TableData.jsx";
 
 export default function Classification() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Use the service to get the current user
     const currentUser = authService.getCurrentUser();
     if (currentUser) {
       setUser(currentUser);
       console.log(currentUser.picture);
     } else {
-      // Optional: if no user is logged in, redirect to the login page
       navigate("/login");
     }
   }, [navigate]);
@@ -63,7 +62,7 @@ export default function Classification() {
     {
       label: "Logout",
       href: "#",
-      onClick: handleLogout, // Add the onClick handler for logout
+      onClick: handleLogout,
       icon: (
         <IconArrowLeft className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
       ),
@@ -73,7 +72,7 @@ export default function Classification() {
   return (
     <div
       className={cn(
-        "mx-auto flex h-screen w-full flex-1 flex-col overflow-hidden rounded-md border border-neutral-200 bg-gray-100 md:flex-row dark:border-neutral-700 dark:bg-neutral-800 bg:black"
+        "mx-auto flex h-screen w-full flex-1 flex-col overflow-hidden rounded-md border border-neutral-200 bg-gray-100 md:flex-row dark:border-neutral-700 dark:bg-neutral-800"
       )}
       style={{ background: "black" }}
     >
@@ -92,23 +91,16 @@ export default function Classification() {
             </div>
           </div>
           <div>
-            {user && ( // Render only when user data is available
+            {user && (
               <SidebarLink
-                key={user.id || user.name} // Add a key to force re-render when user changes
+                key={user.id || user.name}
                 link={{
-                  label: user.name, // Use user's name from cookie
+                  label: user.name,
                   href: "#",
                   icon: (
                     <img
-                      // src={
-
-                      //   `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                      //     user.name || "User"
-                      //   )}&background=random`
-                      // }
                       src={user.picture}
                       className="h-7 w-7 shrink-0 rounded-full"
-                      // It's better to rely on CSS classes for sizing
                       width={50}
                       height={50}
                       alt="Avatar"
@@ -124,6 +116,7 @@ export default function Classification() {
     </div>
   );
 }
+
 export const Logo = () => {
   return (
     <a
@@ -141,6 +134,7 @@ export const Logo = () => {
     </a>
   );
 };
+
 export const LogoIcon = () => {
   return (
     <a
@@ -152,26 +146,12 @@ export const LogoIcon = () => {
   );
 };
 
-// Dummy dashboard component with content
 const Dashboard = () => {
   return (
-    <div className="flex flex-1">
-      <div className="flex h-full w-full flex-1 flex-col gap-2 rounded-tl-2xl border border-neutral-200 bg-white p-2 md:p-10 dark:border-neutral-700 dark:bg-neutral-900">
-        <div className="flex gap-2">
-          {[...new Array(4)].map((i, idx) => (
-            <div
-              key={"first-array-demo-1" + idx}
-              className="h-20 w-full animate-pulse rounded-lg bg-gray-100 dark:bg-neutral-800"
-            ></div>
-          ))}
-        </div>
-        <div className="flex flex-1 gap-2">
-          {[...new Array(2)].map((i, idx) => (
-            <div
-              key={"second-array-demo-1" + idx}
-              className="h-full w-full animate-pulse rounded-lg bg-gray-100 dark:bg-neutral-800"
-            ></div>
-          ))}
+    <div className="flex flex-1 min-h-0 min-w-0 overflow-hidden bg-[#0f172a]">
+      <div className="flex h-full w-full flex-1 flex-col gap-4 rounded-tl-2xl border border-[#1f2937] bg-[#111827] p-4 md:p-6 text-slate-100 min-h-0 min-w-0 overflow-hidden">
+        <div className="flex-1 min-h-0 min-w-0 overflow-hidden">
+          <DataTable />
         </div>
       </div>
     </div>

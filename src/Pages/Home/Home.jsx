@@ -1,21 +1,24 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { LaserFlow } from "./LaserFlow";
 import Image from "../../assets/grid.jpg";
 import Navbar from "../../Components/navbar/Navbar";
 import Dashboard from "./Dashboard";
 
 export const Home = () => {
-  const COLORS = {
-    primary: "#4d108eff",
-    secondary: "#BD93F9",
-    accent: "#8BE9FD",
-    background: "#282A36",
-    surface: "#44475A",
-    text: "#F8F8F2",
-  };
-
   const revealImgRef = useRef(null);
+
+  useEffect(() => {
+    const el = revealImgRef.current;
+    if (!el) return;
+
+    const handlePointerMove = (ev) => {
+      el.style.setProperty("--cursor-x", `${ev.clientX}px`);
+      el.style.setProperty("--cursor-y", `${ev.clientY}px`);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, []);
 
   return (
     <div
@@ -52,6 +55,8 @@ export const Home = () => {
           pointerEvents: "none", // Allow clicks to pass through
         }}
       >
+        <div ref={revealImgRef} className="reveal-image" />
+
         <LaserFlow
           horizontalBeamOffset={0.1}
           verticalBeamOffset={0}
@@ -60,7 +65,7 @@ export const Home = () => {
           flowSpeed={0.35}
           fogIntensity={0.5}
           wispSpeed={12}
-          color={COLORS.primary}
+          color={"#8b00ff"}
           style={{ height: "200vh" }}
         />
       </div>
