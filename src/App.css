@@ -11,12 +11,13 @@ body,
   height: 100%;
   margin: 0;
   background-color: #000000;
+  color: #ffffff;
 }
 
 /* keep global app neutral (login has its own styling) */
 body {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000;
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

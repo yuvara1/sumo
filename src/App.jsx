@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RequireAuth from "./Components/RequireAuth.jsx";
+import RequireAuth from "./components/RequireAuth.jsx";
 import { LoaderThree } from "./Components/ui/loader.jsx";
 
 // Lazy load the page components

@@ -254,9 +254,9 @@ export default function DataTable() {
               height: "100%",
               border: "none",
               "& .MuiDataGrid-columnHeaders": {
-                backgroundColor: "#000000",
+                backgroundColor: "#000000 !important",
                 borderBottom: "2px solid #1f2937",
-                color: "#ffffff",
+                color: "#000000ff",
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: 0.4,

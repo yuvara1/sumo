@@ -149,8 +149,8 @@ export const LogoIcon = () => {
 const Dashboard = () => {
   return (
     <div className="flex flex-1 min-h-0 min-w-0 overflow-hidden bg-[#0f172a]">
-      <div className="flex h-full w-full flex-1 flex-col gap-4 rounded-tl-2xl border border-[#1f2937] bg-[#111827] p-4 md:p-6 text-slate-100 min-h-0 min-w-0 overflow-hidden">
-        <div className="flex-1 min-h-0 min-w-0 overflow-hidden">
+      <div className="flex h-full w-full flex-1 flex-col gap-4 rounded-tl-2xl border border-[#1f2937] dark:bg-black p-4 md:p-6 text-slate-100 min-h-0 min-w-0 overflow-hidden">
+        <div className="flex-1 min-h-0 min-w-0 overflow-hidden bg-black-900 rounded-lg p-2 md:p-4">
           <DataTable />
         </div>
       </div>
