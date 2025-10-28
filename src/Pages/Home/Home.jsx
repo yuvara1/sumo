@@ -5,19 +5,26 @@ import Navbar from "../../Components/navbar/Navbar";
 import Dashboard from "./Dashboard";
 
 export const Home = () => {
+  const COLORS = {
+    primary: "#4d108eff",
+    secondary: "#BD93F9",
+    accent: "#8BE9FD",
+    background: "#282A36",
+    surface: "#44475A",
+    text: "#F8F8F2",
+  };
+
   const revealImgRef = useRef(null);
 
   useEffect(() => {
     const el = revealImgRef.current;
     if (!el) return;
-
-    const handlePointerMove = (ev) => {
-      el.style.setProperty("--cursor-x", `${ev.clientX}px`);
-      el.style.setProperty("--cursor-y", `${ev.clientY}px`);
+    const handleMove = ({ clientX, clientY }) => {
+      el.style.setProperty("--mx", `${clientX}px`);
+      el.style.setProperty("--my", `${clientY}px`);
     };
-
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
-    return () => window.removeEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointermove", handleMove, { passive: true });
+    return () => window.removeEventListener("pointermove", handleMove);
   }, []);
 
   return (
@@ -28,15 +35,6 @@ export const Home = () => {
         // position: "relative",
         backgroundColor: "#000000ff",
         overflowX: "hidden", // Allow vertical scrolling
-      }}
-      onMouseMove={(e) => {
-        // Use clientX/Y and add scrollY for correct positioning
-        const x = e.clientX;
-        const y = e.clientY + window.scrollY;
-        if (revealImgRef.current) {
-          revealImgRef.current.style.setProperty("--mx", `${x}px`);
-          revealImgRef.current.style.setProperty("--my", `${y}px`);
-        }
       }}
       onMouseLeave={() => {
         if (revealImgRef.current) {
@@ -55,8 +53,6 @@ export const Home = () => {
           pointerEvents: "none", // Allow clicks to pass through
         }}
       >
-        <div ref={revealImgRef} className="reveal-image" />
-
         <LaserFlow
           horizontalBeamOffset={0.1}
           verticalBeamOffset={0}
@@ -65,7 +61,7 @@ export const Home = () => {
           flowSpeed={0.35}
           fogIntensity={0.5}
           wispSpeed={12}
-          color={"#8b00ff"}
+          color={COLORS.primary}
           style={{ height: "200vh" }}
         />
       </div>
